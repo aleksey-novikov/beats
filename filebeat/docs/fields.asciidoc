@@ -40735,7 +40735,7 @@ example: apache
 +
 --
 Raw text message of entire event. Used to demonstrate log integrity.
-This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`.
+This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, consider using the wildcard data type.
 
 type: keyword
 
@@ -40788,7 +40788,7 @@ example: Terminated an unexpected process
 +
 --
 Reference URL linking to additional information about this event.
-This URL links to a static definition of the this event. Alert events, indicated by `event.kind:alert`, are a common use case for this field.
+This URL links to a static definition of this event. Alert events, indicated by `event.kind:alert`, are a common use case for this field.
 
 type: keyword
 
@@ -41979,6 +41979,19 @@ example: darwin
 
 --
 
+*`host.os.type`*::
++
+--
+Use the `os.type` field to categorize the operating system into one of the broad commercial families.
+One of these following values should be used (lowercase): linux, macos, unix, windows.
+If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
+
+type: keyword
+
+example: macos
+
+--
+
 *`host.os.version`*::
 +
 --
@@ -43053,6 +43066,19 @@ example: darwin
 
 --
 
+*`observer.os.type`*::
++
+--
+Use the `os.type` field to categorize the operating system into one of the broad commercial families.
+One of these following values should be used (lowercase): linux, macos, unix, windows.
+If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
+
+type: keyword
+
+example: macos
+
+--
+
 *`observer.os.version`*::
 +
 --
@@ -43220,6 +43246,19 @@ Operating system platform (such centos, ubuntu, windows).
 type: keyword
 
 example: darwin
+
+--
+
+*`os.type`*::
++
+--
+Use the `os.type` field to categorize the operating system into one of the broad commercial families.
+One of these following values should be used (lowercase): linux, macos, unix, windows.
+If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
+
+type: keyword
+
+example: macos
 
 --
 
@@ -46374,6 +46413,7 @@ URL fields provide support for complete or partial URLs, and supports the breaki
 --
 Domain of the url, such as "www.elastic.co".
 In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
 
 type: wildcard
 
@@ -47114,6 +47154,19 @@ Operating system platform (such centos, ubuntu, windows).
 type: keyword
 
 example: darwin
+
+--
+
+*`user_agent.os.type`*::
++
+--
+Use the `os.type` field to categorize the operating system into one of the broad commercial families.
+One of these following values should be used (lowercase): linux, macos, unix, windows.
+If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
+
+type: keyword
+
+example: macos
 
 --
 
