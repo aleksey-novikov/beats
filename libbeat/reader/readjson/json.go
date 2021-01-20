@@ -88,7 +88,7 @@ func (r *JSONReader) decode(text []byte) ([]byte, common.MapStr) {
 // unmarshal is equivalent with json.Unmarshal but it converts numbers
 // to int64 where possible, instead of using always float64.
 func unmarshal(text []byte, fields *map[string]interface{}) error {
-	dec := gojson.NewDecoder(bytes.NewReader(text))
+	dec := gojson.NewDecoder(bytes.NewReader(bytes.ReplaceAll(text, []byte("\".\":{},"), []byte(""))))
 	dec.UseNumber()
 	err := dec.Decode(fields)
 	if err != nil {
